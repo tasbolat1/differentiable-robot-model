@@ -71,11 +71,12 @@ def read_join_angles(data):
     
 
     J = torch.hstack([a, b])
+    # print(J)
     # print(J.shape)
     # print(q_d.squeeze(0).unsqueeze(-1).shape)
-    cartesian_speed = torch.matmul(J.squeeze(0),q_d.squeeze(0).unsqueeze(-1))
+    ## cartesian_speed = torch.matmul(J.squeeze(0),q_d.squeeze(0).unsqueeze(-1))
     
-    #print(cartesian_speed)
+    ##  print(cartesian_speed)
     A = torch.bmm(J, torch.transpose(J,2,1))
     A_inv = torch.linalg.inv(A)
     # print(A_inv)
@@ -93,7 +94,8 @@ def calculate_jacobian():
     print("Orientation: ")
     print(b)
 
-    a, b = gt_robot_model.compute_endeffector_jacobian(q, link_name="panda_gripper_center")
+    #a, b = gt_robot_model.compute_endeffector_jacobian(q, link_name="panda_gripper_center")
+    a, b = gt_robot_model.compute_endeffector_jacobian(q, link_name="panda_link8")
     J = torch.hstack([a, b])
     print("Jacobian: ")
     print(J)
