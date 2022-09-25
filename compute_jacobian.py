@@ -82,6 +82,7 @@ def read_join_angles(data):
     # print(A_inv)
     #det_A_inv = torch.linalg.det(A_inv)
     det_A_inv = torch.linalg.det(A)
+    # print(torch.sqrt(det_A_inv))
     print(det_A_inv)
     # print(J.shape)
 
