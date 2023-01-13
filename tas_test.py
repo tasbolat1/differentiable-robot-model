@@ -23,7 +23,7 @@ class DifferentiableFrankaPanda(DifferentiableRobotModel):
     def __init__(self, device=None):
         #rel_urdf_path = "panda_description/urdf/panda_no_gripper.urdf"
         #self.urdf_path = os.path.join(robot_description_folder, rel_urdf_path)
-        self.urdf_path = '/home/crslab/GRASP/differentiable-robot-model/diff_robot_data/panda_description/urdf/panda_hand_arm_modified_tas.urdf'
+        self.urdf_path = 'diff_robot_data/panda_description/urdf/panda_hand_arm_modified_tas_without_finger.urdf'
         self.learnable_rigid_body_config = None
         self.name = "differentiable_franka_panda"
         super().__init__(self.urdf_path, self.name, device=device)
@@ -38,6 +38,9 @@ print(gt_robot_model._name_to_idx_map)
 # q = torch.FloatTensor([[-0.000221715449139051, -0.7847544138724399, 0.00010503894092899076, -2.3551128582357386, -4.516856144455796e-05, 1.5710171426932014, 0.784951122533256, 0, 0.05]])
 # q = torch.FloatTensor([[-0.41615460004618293, 0.2536675692106548, -0.11877543107982268, -1.281291567250302, 1.0011549899256862, 2.3353868778729256, 0.6946935629604591, 0, 0]])
 q = torch.FloatTensor([[0.0004889113489342363, -0.7847176363008063, 0.00015172012997570039, -2.355121423735089, -0.0008362295771768507, 1.570923002322515, 0.7848479620383846, 0, 0]])
+q = torch.FloatTensor([[0, -np.pi/4, 0, -3*np.pi/4, 0, np.pi/2, np.pi/4, 0, 0]])
+
+
 # q.requires_grad_(True)
 # a,b = gt_robot_model.compute_forward_kinematics(
 #             q=q, link_name="panda_virtual_ee_link"
